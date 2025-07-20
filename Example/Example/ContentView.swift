@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import DestinationSwipeControl
 
 struct ParentView: View {
     @State var shouldShowChild: Bool = false
@@ -21,8 +22,7 @@ struct ParentView: View {
             }
             .navigationDestination(isPresented: $shouldShowChild) {
                 ChildView(count: 1, enabled: enabled, isPresented: $shouldShowChild)
-                    .navigationBarBackButtonHidden()
-                    .interactiveDismissDisabled(!enabled)
+                    .swipeable(enabled)
             }
         }
     }
@@ -55,8 +55,7 @@ struct ChildView: View {
         }
         .navigationDestination(isPresented: $shouldShowChild) {
             ChildView(count: count+1, enabled: !enabled, isPresented: $shouldShowChild)
-                .navigationBarBackButtonHidden()
-                .interactiveDismissDisabled(enabled)
+                .swipeable(!enabled)
         }
     }
 }

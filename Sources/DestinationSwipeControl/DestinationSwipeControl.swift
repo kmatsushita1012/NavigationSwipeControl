@@ -57,7 +57,7 @@ struct SwipeableView<Content: View>: UIViewControllerRepresentable {
 @available(iOS 13.0, *)
 extension View {
     @ViewBuilder
-    public func swipeable(_ isEnabled: Bool)-> some View{
+    public func swipeable(_ isEnabled: Bool = true)-> some View{
         SwipeableView(
             enabled: isEnabled
         ){
@@ -70,22 +70,8 @@ extension View {
 extension View {
     @ViewBuilder
     public func dismisible(backButton: Bool, edgeSwipe: Bool) -> some View {
-        if backButton {
-            if edgeSwipe {
-                self
-            }else{
-                self
-                    .interactiveDismissDisabled()
-            }
-        } else {
-            if edgeSwipe {
-                self
-                    .navigationBarBackButtonHidden()
-                    .swipeable(true)
-            } else {
-                self
-                    .navigationBarBackButtonHidden()
-            }
-        }
+        self
+            .navigationBarBackButtonHidden(!backButton)
+            .swipeable(edgeSwipe)
     }
 }
