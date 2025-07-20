@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import DestinationSwipeControl
 
 struct ParentView: View {
     @State var shouldShowChild: Bool = false
@@ -23,7 +22,7 @@ struct ParentView: View {
             .navigationDestination(isPresented: $shouldShowChild) {
                 ChildView(count: 1, enabled: enabled, isPresented: $shouldShowChild)
                     .navigationBarBackButtonHidden()
-                    .swipeable(enabled)
+                    .interactiveDismissDisabled(!enabled)
             }
         }
     }
@@ -36,30 +35,28 @@ struct ChildView: View {
     @State var shouldShowChild: Bool = false
     
     var body: some View {
-        NavigationView{
-            VStack{
-                Text("Child \(count)")
-                if enabled {
-                    Text("Swipe Enable")
-                }else{
-                    Text("Swipe Disable")
-                }
-                Button("Next"){
-                    shouldShowChild = true
-                }
+        VStack{
+            Text("Child \(count)")
+            if enabled {
+                Text("Swipe Enable")
+            }else{
+                Text("Swipe Disable")
             }
-            .toolbar {
-                ToolbarItem(placement: .topBarLeading) {
-                    Button("Back"){
-                        isPresented = false
-                    }
+            Button("Next"){
+                shouldShowChild = true
+            }
+        }
+        .toolbar {
+            ToolbarItem(placement: .topBarLeading) {
+                Button("Back"){
+                    isPresented = false
                 }
             }
-            .navigationDestination(isPresented: $shouldShowChild) {
-                ChildView(count: count+1, enabled: !enabled, isPresented: $shouldShowChild)
-                    .navigationBarBackButtonHidden()
-                    .swipeable(!enabled)
-            }
+        }
+        .navigationDestination(isPresented: $shouldShowChild) {
+            ChildView(count: count+1, enabled: !enabled, isPresented: $shouldShowChild)
+                .navigationBarBackButtonHidden()
+                .interactiveDismissDisabled(enabled)
         }
     }
 }
