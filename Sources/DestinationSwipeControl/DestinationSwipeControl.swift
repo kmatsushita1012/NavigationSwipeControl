@@ -25,6 +25,10 @@ extension UINavigationController: @retroactive UIGestureRecognizerDelegate {
         }
         return swipeableVC.isSwipeable
     }
+    
+    public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        true
+    }
 }
 
 @available(iOS 13.0, *)
@@ -40,6 +44,11 @@ struct SwipeableView<Content: View>: UIViewControllerRepresentable {
     
     class SwipeableController: UIHostingController<Content>, SwipeableControllerProtocol {
         var isSwipeable = true
+        
+        override func viewDidLoad() {
+            super.viewDidLoad()
+        }
+
     }
     
     func makeUIViewController(context: Context) -> SwipeableController {
@@ -71,7 +80,8 @@ extension View {
     @ViewBuilder
     public func dismisible(backButton: Bool = true, edgeSwipe: Bool = true) -> some View {
         self
-            .navigationBarBackButtonHidden(!backButton)
             .swipeable(edgeSwipe)
+            .navigationBarBackButtonHidden(!backButton)
     }
 }
+
