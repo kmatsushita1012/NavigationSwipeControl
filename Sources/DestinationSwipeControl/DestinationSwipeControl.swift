@@ -69,7 +69,7 @@ extension View {
 @available(iOS 15.0, *)
 extension View {
     @ViewBuilder
-    public func dismisible(backButton: Bool, edgeSwipe: Bool) -> some View {
+    public func dismisible(backButton: Bool = true, edgeSwipe: Bool = true) -> some View {
         self
             .navigationBarBackButtonHidden(!backButton)
             .swipeable(edgeSwipe)
