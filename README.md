@@ -6,7 +6,7 @@ DestinationSwipeControl is a Swift package that allows you to flexibly control t
 
 - Enable or disable the back gesture (edge swipe) per SwiftUI view
 - Show or hide the navigation bar back button per view
-- Fine-grained control using the `dismisible(backButton:edgeSwipe:)` modifier
+- Fine-grained control using the `dismissible(backButton:edgeSwipe:)` modifier
 
 ## Installation (Swift Package Manager)
 
@@ -24,7 +24,7 @@ struct ContentView: View {
         NavigationStack {
             NavigationLink("Go to Next View") {
                 NextView()
-                    .dismisible(backButton: false, edgeSwipe: true)
+                    .dismissible(backButton: false, edgeSwipe: true)
             }
         }
     }
@@ -37,7 +37,7 @@ struct NextView: View {
 }
 ```
 
-### `dismisible` Parameters
+### `dismissible` Parameters
 
 - `backButton: Bool`  
   Show or hide the navigation bar back button
