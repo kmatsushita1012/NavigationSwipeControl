@@ -22,7 +22,6 @@ struct ParentView: View {
             }
             .navigationDestination(isPresented: $shouldShowChild) {
                 ChildView(count: 1, enabled: enabled, isPresented: $shouldShowChild)
-                    .dismissible(backButton: false, edgeSwipe: enabled)
             }
         }
     }
@@ -35,9 +34,8 @@ struct ChildView: View {
     @State var shouldShowChild: Bool = false
     
     var body: some View {
-        ScrollView{
-            VStack(spacing: 16){
-                Text("Child \(count)")
+        List{
+            Section {
                 if enabled {
                     Text("Swipe Enable")
                 }else{
@@ -46,13 +44,16 @@ struct ChildView: View {
                 Button("Next"){
                     shouldShowChild = true
                 }
+            }
+            Section{
                 ForEach(0..<10){
                     Text("Item \($0)")
                         .padding()
                 }
             }
-            .frame(maxWidth: .infinity)
         }
+        .navigationTitle("Child \(count)")
+        .navigationBarTitleDisplayMode(.large)
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
                 Button("Back"){
@@ -60,9 +61,10 @@ struct ChildView: View {
                 }
             }
         }
+        .dismissible(backButton: false, edgeSwipe: enabled)
         .navigationDestination(isPresented: $shouldShowChild) {
             ChildView(count: count+1, enabled: !enabled, isPresented: $shouldShowChild)
-                .dismissible(backButton: false, edgeSwipe: !enabled)
+                
         }
     }
 }

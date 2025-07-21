@@ -19,7 +19,7 @@ extension UINavigationController: @retroactive UIGestureRecognizerDelegate {
         guard let lastVC = viewControllers.last, viewControllers.count > 1 else {
             return false
         }
-        
+        print(lastVC.children)
         guard let swipeableVC = lastVC.children.first as? SwipeableControllerProtocol else {
             return true
         }
@@ -32,17 +32,15 @@ extension UINavigationController: @retroactive UIGestureRecognizerDelegate {
 }
 
 @available(iOS 13.0, *)
-struct SwipeableView<Content: View>: UIViewControllerRepresentable {
+struct SwipeableView: UIViewControllerRepresentable {
     
     var enabled: Bool
-    let content: Content
 
-    init(enabled: Bool = true, @ViewBuilder content: () -> Content) {
+    init(enabled: Bool = true) {
         self.enabled = enabled
-        self.content = content()
     }
     
-    class SwipeableController: UIHostingController<Content>, SwipeableControllerProtocol {
+    class SwipeableController: UIViewController, SwipeableControllerProtocol {
         var isSwipeable = true
         
         override func viewDidLoad() {
@@ -52,30 +50,30 @@ struct SwipeableView<Content: View>: UIViewControllerRepresentable {
     }
     
     func makeUIViewController(context: Context) -> SwipeableController {
-        let controller = SwipeableController(rootView: content)
+        let controller = SwipeableController()
         controller.isSwipeable = enabled
-        controller.rootView = content
         return controller
     }
 
     func updateUIViewController(_ uiViewController: SwipeableController, context: Context) {
-        uiViewController.rootView = content
+        
     }
 }
 
-@available(iOS 13.0, *)
+@available(iOS 16.0, *)
 extension View {
     @ViewBuilder
     public func swipeable(_ isEnabled: Bool = true)-> some View{
-        SwipeableView(
-            enabled: isEnabled
-        ){
-            self
-        }
+        self
+            .background(
+                SwipeableView(
+                    enabled: isEnabled
+                )
+            )
     }
 }
 
-@available(iOS 15.0, *)
+@available(iOS 16.0, *)
 extension View {
     @ViewBuilder
     public func dismissible(backButton: Bool = true, edgeSwipe: Bool = true) -> some View {
