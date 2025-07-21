@@ -19,7 +19,6 @@ extension UINavigationController: @retroactive UIGestureRecognizerDelegate {
         guard let lastVC = viewControllers.last, viewControllers.count > 1 else {
             return false
         }
-        print(lastVC.children)
         guard let swipeableVC = lastVC.children.first as? SwipeableControllerProtocol else {
             return true
         }
