@@ -4,24 +4,24 @@
 import PackageDescription
 
 let package = Package(
-    name: "DestinationSwipeControl",
+    name: "NavigationSwipeControl",
     platforms: [
         .iOS(.v13) // SwiftUIやUIKitを使うなら対応最低バージョンを指定
     ],
     products: [
         // Products define the executables and libraries a package produces, making them visible to other packages.
         .library(
-            name: "DestinationSwipeControl",
-            targets: ["DestinationSwipeControl"]),
+            name: "NavigationSwipeControl",
+            targets: ["NavigationSwipeControl"]),
     ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
         // Targets can depend on other targets in this package and products from dependencies.
         .target(
-            name: "DestinationSwipeControl"),
+            name: "NavigationSwipeControl"),
         .testTarget(
-            name: "DestinationSwipeControlTests",
-            dependencies: ["DestinationSwipeControl"]
+            name: "NavigationSwipeControlTests",
+            dependencies: ["NavigationSwipeControl"]
         ),
     ]
 )

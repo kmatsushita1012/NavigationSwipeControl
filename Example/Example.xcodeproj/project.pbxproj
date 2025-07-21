@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		29BA63CB2E2BF981004A13EA /* DestinationSwipeControl in Frameworks */ = {isa = PBXBuildFile; productRef = 29BA63CA2E2BF981004A13EA /* DestinationSwipeControl */; };
+		29BA63CB2E2BF981004A13EA /* NavigationSwipeControl in Frameworks */ = {isa = PBXBuildFile; productRef = 29BA63CA2E2BF981004A13EA /* NavigationSwipeControl */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,7 +56,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				29BA63CB2E2BF981004A13EA /* DestinationSwipeControl in Frameworks */,
+				29BA63CB2E2BF981004A13EA /* NavigationSwipeControl in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -125,7 +125,7 @@
 			);
 			name = Example;
 			packageProductDependencies = (
-				29BA63CA2E2BF981004A13EA /* DestinationSwipeControl */,
+				29BA63CA2E2BF981004A13EA /* NavigationSwipeControl */,
 			);
 			productName = Example;
 			productReference = 29BA633C2E2BF6C7004A13EA /* Example.app */;
@@ -210,7 +210,7 @@
 			mainGroup = 29BA63332E2BF6C7004A13EA;
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
-				29BA637B2E2BF7EF004A13EA /* XCLocalSwiftPackageReference "../../DestinationSwipeControl" */,
+				29BA637B2E2BF7EF004A13EA /* XCLocalSwiftPackageReference "../../NavigationSwipeControl" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 29BA633D2E2BF6C7004A13EA /* Products */;
@@ -577,17 +577,17 @@
 /* End XCConfigurationList section */
 
 /* Begin XCLocalSwiftPackageReference section */
-		29BA637B2E2BF7EF004A13EA /* XCLocalSwiftPackageReference "../../DestinationSwipeControl" */ = {
+		29BA637B2E2BF7EF004A13EA /* XCLocalSwiftPackageReference "../../NavigationSwipeControl" */ = {
 			isa = XCLocalSwiftPackageReference;
-			relativePath = ../../DestinationSwipeControl;
+			relativePath = ../../NavigationSwipeControl;
 		};
 /* End XCLocalSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		29BA63CA2E2BF981004A13EA /* DestinationSwipeControl */ = {
+		29BA63CA2E2BF981004A13EA /* NavigationSwipeControl */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 29BA637B2E2BF7EF004A13EA /* XCLocalSwiftPackageReference "../../DestinationSwipeControl" */;
-			productName = DestinationSwipeControl;
+			package = 29BA637B2E2BF7EF004A13EA /* XCLocalSwiftPackageReference "../../NavigationSwipeControl" */;
+			productName = NavigationSwipeControl;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

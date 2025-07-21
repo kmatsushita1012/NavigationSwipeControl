@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import DestinationSwipeControl
+import NavigationSwipeControl
 
 struct ParentView: View {
     @State var shouldShowChild: Bool = false

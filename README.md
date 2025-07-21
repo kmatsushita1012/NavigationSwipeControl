@@ -1,6 +1,6 @@
-# DestinationSwipeControl
+# NavigationSwipeControl
 
-DestinationSwipeControl is a Swift package that allows you to flexibly control the "back" gesture (edge swipe) and navigation bar back button behavior for each SwiftUI screen.
+NavigationSwipeControl is a Swift package that allows you to flexibly control the "back" gesture (edge swipe) and navigation bar back button behavior for each SwiftUI screen.
 
 ## Features
 
@@ -16,7 +16,7 @@ DestinationSwipeControl is a Swift package that allows you to flexibly control t
 ## Usage Example
 
 ```swift
-import DestinationSwipeControl
+import NavigationSwipeControl
 import SwiftUI
 
 struct ContentView: View {
