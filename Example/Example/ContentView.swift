@@ -22,9 +22,8 @@ struct ParentView: View {
             }
             .navigationDestination(isPresented: $shouldShowChild) {
                 ChildView(count: 1, enabled: enabled, isPresented: $shouldShowChild)
-                    .dismisible(backButton: false, edgeSwipe: enabled)
+                    .dismissible(backButton: false, edgeSwipe: enabled)
             }
-            
         }
     }
 }
@@ -63,7 +62,7 @@ struct ChildView: View {
         }
         .navigationDestination(isPresented: $shouldShowChild) {
             ChildView(count: count+1, enabled: !enabled, isPresented: $shouldShowChild)
-                .dismisible(backButton: false, edgeSwipe: !enabled)
+                .dismissible(backButton: false, edgeSwipe: !enabled)
         }
     }
 }
