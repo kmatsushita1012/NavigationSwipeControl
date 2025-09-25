@@ -70,7 +70,7 @@ extension View {
                         enabled: isEnabled
                     )
                 )
-        } else if #available(iOS 16, *) && withPerception {
+        } else if #available(iOS 16, *), withPerception {
             // iOS16.*ではWithPerceptionTrakingと併用できないため
             self
         } else {
