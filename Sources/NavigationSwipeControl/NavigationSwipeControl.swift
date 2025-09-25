@@ -62,22 +62,39 @@ struct SwipeableView: UIViewControllerRepresentable {
 @available(iOS 16.0, *)
 extension View {
     @ViewBuilder
-    public func swipeable(_ isEnabled: Bool = true)-> some View{
-        self
-            .background(
-                SwipeableView(
-                    enabled: isEnabled
+    public func swipeable(_ isEnabled: Bool = true, withPerception: Bool = false)-> some View{
+        if #available(iOS 17, *) {
+            self
+                .background(
+                    SwipeableView(
+                        enabled: isEnabled
+                    )
                 )
-            )
+        } else if #available(iOS 16, *) && withPerception {
+            // iOS16.*ではWithPerceptionTrakingと併用できないため
+            self
+        } else {
+            self
+                .background(
+                    SwipeableView(
+                        enabled: isEnabled
+                    )
+                )
+        }
+        
     }
 }
 
 @available(iOS 16.0, *)
 extension View {
     @ViewBuilder
-    public func dismissible(backButton: Bool = true, edgeSwipe: Bool = true) -> some View {
+    public func dismissible(
+        backButton: Bool = true,
+        edgeSwipe: Bool = true,
+        withPerception: Bool = false
+    ) -> some View {
         self
-            .swipeable(edgeSwipe)
+            .swipeable(edgeSwipe, withPerception: withPerception)
             .navigationBarBackButtonHidden(!backButton)
     }
 }
