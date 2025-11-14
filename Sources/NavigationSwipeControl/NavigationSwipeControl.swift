@@ -1,6 +1,7 @@
 // The Swift Programming Language
 // https://docs.swift.org/swift-book
 
+#if canImport(UIKit)
 import SwiftUI
 import UIKit
 
@@ -70,7 +71,7 @@ extension View {
                         enabled: isEnabled
                     )
                 )
-        } else if #available(iOS 16, *), withPerception {
+        } else if withPerception {
             // iOS16.*ではWithPerceptionTrakingと併用できないため
             self
         } else {
@@ -99,3 +100,4 @@ extension View {
     }
 }
 
+#endif
